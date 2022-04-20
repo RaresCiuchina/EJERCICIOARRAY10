@@ -1,26 +1,24 @@
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Principal {
 
         public static void main (String [] arg){
 
-            int[] array;
-            array = new int [9];
-            final int total = 9 ;
-
+            Integer[] array = new Integer [10];
             int faltan = 10;
-            int i;
+
             Scanner sc = new Scanner(System.in);
-            for(i=0; i<=total; i++) {
+            for(int i=0; i< array.length; i++) {
                 System.out.println("Dime " + faltan + " numeros enteros");
                     array[i] = sc.nextInt();
                     faltan=faltan-1;
             }
-          BuscarNumero(array);
+          Contar_repeticiones(array);
 
         }
-    private static void BuscarNumero(int[] array) {
+    private static void Contar_repeticiones(Integer[] array) {
 
         Arrays.sort(array); //Ordenamos el array
         int cont = 0;
@@ -30,18 +28,33 @@ public class Principal {
         for ( i = 0; i<=9; i++){ //i=0
             if (aux == array[i])
             {
-                cont++;
+                cont++; //suma las veces que 0 es igual a 0
             }
             else
             {
-                System.out.println( aux + "  =  " + cont + " veces");
+                System.out.println( aux + "  =  " + cont + " veces"); //sino, lo imprime
                 cont=1;
                 aux=array[i];
             }
         }
         System.out.println( aux + "  =  " + cont + " veces");
 
+    }
+   /*
+   Explicado en clase:
+   public static String ContarRepticionesconHashMap (Integer[] array) {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (Integer num : array) {
+            if (map.containsKey(num)) {
+                Integer value = map.get(num);
+                value++;
+                map.replace(num, value);
+            } else {
+                map.put(num, 1);
+            }
+        }
 
+    */
     }
 }
 
